@@ -7,8 +7,8 @@ namespace Unity.Template.Multiplayer.NGO.Editor
     ///</summary>
     public static class CloudBuildHelpers
     {
-        const string k_AdditionalClientBuildFilesFolder = "Assets/AdditionalBuildFiles/Client/";
-        const string k_AdditionalServerBuildFilesFolder = "Assets/AdditionalBuildFiles/Server/";
+        const string k_AdditionalClientBuildFilesFolder = "Assets/.AdditionalBuildFiles/Client/";
+        const string k_AdditionalServerBuildFilesFolder = "Assets/.AdditionalBuildFiles/Server/";
 
         /// <summary>
         /// Method called from CloudBuild when the build finishes.

@@ -125,7 +125,7 @@ namespace Unity.Template.Multiplayer.NGO.Editor
             PerformStandaloneWindows64();
         }
 
-        [MenuItem("Multiplayer/Builds/Server_StandaloneWindws64")]
+        [MenuItem("Multiplayer/Builds/Server_StandaloneWindws")]
         static void PerformServerStandaloneWindows64()
         {
             Debug.Log("Building server windows64");
@@ -134,7 +134,7 @@ namespace Unity.Template.Multiplayer.NGO.Editor
             BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
                 scenes = GetScenePaths(),
-                locationPathName = "Builds/ServerWindows64/Game.exe",
+                locationPathName = "Builds/ServerWindows/Game.exe",
                 target = BuildTarget.StandaloneWindows64,
                 subtarget = (int)StandaloneBuildSubtarget.Server,
             });
@@ -149,13 +149,13 @@ namespace Unity.Template.Multiplayer.NGO.Editor
             BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
                 scenes = GetScenePaths(),
-                locationPathName = "Builds/Server/Game.x86_64",
+                locationPathName = "Builds/ServerLinux/Game",
                 target = BuildTarget.StandaloneLinux64,
                 subtarget = (int)StandaloneBuildSubtarget.Server,
             });
         }
 
-        [MenuItem("Multiplayer/Builds/Client_StandaloneWindows64")]
+        [MenuItem("Multiplayer/Builds/Client_StandaloneWindows")]
         static void PerformStandaloneWindows64()
         {
             Debug.Log("Building client");
