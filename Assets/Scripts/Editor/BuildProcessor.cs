@@ -74,7 +74,7 @@ namespace Unity.Template.Multiplayer.NGO.Editor
             AssetDatabase.SaveAssets();
 #if !CLOUD_BUILD_WINDOWS && !CLOUD_BUILD_LINUX && !CLOUD_BUILD_MAX
             Debug.Log($"Manually Doing PostExport: {report.summary.outputPath}");
-            bool isServerBuild = report.summary.outputPath.Contains(".x86_64", System.StringComparison.OrdinalIgnoreCase); //.x86_64 is the extension of the Linux build
+            bool isServerBuild = EditorUserBuildSettings.standaloneBuildSubtarget != StandaloneBuildSubtarget.Player; // Non-Player must be DedicatedServer
             CloudBuildHelpers.PostExport(report.summary.outputPath, isServerBuild);
 #endif
         }
@@ -125,11 +125,11 @@ namespace Unity.Template.Multiplayer.NGO.Editor
             PerformStandaloneWindows64();
         }
 
-        [MenuItem("Multiplayer/Builds/Server_StandaloneWindws")]
+        [MenuItem("Multiplayer/Builds/Server_StandaloneWindows")]
         static void PerformServerStandaloneWindows64()
         {
-            Debug.Log("Building server windows64");
-            DeleteOutputFolder("ServerWindows64/");
+            Debug.Log("Building server windows");
+            DeleteOutputFolder("ServerWindows/");
             EditorUserBuildSettings.SwitchActiveBuildTarget(NamedBuildTarget.Server, BuildTarget.StandaloneWindows64);
             BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
@@ -143,8 +143,8 @@ namespace Unity.Template.Multiplayer.NGO.Editor
         [MenuItem("Multiplayer/Builds/Server_StandaloneLinux")]
         static void PerformServerStandaloneLinux64()
         {
-            Debug.Log("Building server");
-            DeleteOutputFolder("Server/");
+            Debug.Log("Building server linux");
+            DeleteOutputFolder("ServerLinux/");
             EditorUserBuildSettings.SwitchActiveBuildTarget(NamedBuildTarget.Server, BuildTarget.StandaloneLinux64);
             BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
