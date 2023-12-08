@@ -118,7 +118,7 @@ namespace Unity.Template.Multiplayer.NGO.Editor
         }
 
         [MenuItem("Multiplayer/Builds/All")]
-        static void MakeServerAndClientBuilds()
+        public static void MakeServerAndClientBuilds()
         {
             PerformServerStandaloneLinux64();
             PerformServerStandaloneWindows64();
@@ -126,7 +126,7 @@ namespace Unity.Template.Multiplayer.NGO.Editor
         }
 
         [MenuItem("Multiplayer/Builds/Server_StandaloneWindows")]
-        static void PerformServerStandaloneWindows64()
+        public static void PerformServerStandaloneWindows64()
         {
             Debug.Log("Building server windows");
             DeleteOutputFolder("ServerWindows/");
@@ -134,14 +134,14 @@ namespace Unity.Template.Multiplayer.NGO.Editor
             BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
                 scenes = GetScenePaths(),
-                locationPathName = "Builds/ServerWindows/Game.exe",
+                locationPathName = "Builds/ServerWindows/GameServer.exe",
                 target = BuildTarget.StandaloneWindows64,
                 subtarget = (int)StandaloneBuildSubtarget.Server,
             });
         }
 
         [MenuItem("Multiplayer/Builds/Server_StandaloneLinux")]
-        static void PerformServerStandaloneLinux64()
+        public static void PerformServerStandaloneLinux64()
         {
             Debug.Log("Building server linux");
             DeleteOutputFolder("ServerLinux/");
@@ -149,14 +149,14 @@ namespace Unity.Template.Multiplayer.NGO.Editor
             BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
                 scenes = GetScenePaths(),
-                locationPathName = "Builds/ServerLinux/Game",
+                locationPathName = "Builds/ServerLinux/GameServer",
                 target = BuildTarget.StandaloneLinux64,
                 subtarget = (int)StandaloneBuildSubtarget.Server,
             });
         }
 
         [MenuItem("Multiplayer/Builds/Client_StandaloneWindows")]
-        static void PerformStandaloneWindows64()
+        public static void PerformStandaloneWindows64()
         {
             Debug.Log("Building client");
             DeleteOutputFolder("Client/");
